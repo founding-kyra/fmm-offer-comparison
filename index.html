@@ -677,10 +677,43 @@ th.root-th   .th-name { color: rgba(239,234,224,0.6); font-style: italic; }
 /* ── RESPONSIVE ── */
 @media (max-width: 920px) {
   .cards { grid-template-columns: 1fr 1fr; }
-  .compare-table { display: none; }
   .lifecycle { flex-wrap: wrap; gap: 12px; justify-content: center; }
   .life-connector { display: none; }
   .page { padding: 48px 24px 64px; }
+
+  /* Mobile comparison table — horizontal scroll */
+  .compare-section { margin-top: 48px; }
+
+  .compare-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+  .compare-table table { min-width: 560px; }
+
+  /* Sticky first column (row labels) */
+  .compare-table thead th:first-child,
+  .compare-table tbody td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--cream);
+  }
+  .compare-table thead th:first-child {
+    z-index: 3;
+    background: var(--mud);
+  }
+
+  /* Tighten up cell padding on mobile */
+  .compare-table thead th { padding: 14px 12px; font-size: 13px; }
+  .compare-table tbody td { padding: 10px 12px; font-size: 12px; white-space: nowrap; }
+
+  /* Swipe hint above the table */
+  .compare-label::after {
+    content: " · swipe to compare →";
+    opacity: 0.5;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
