@@ -7,7 +7,7 @@
 <meta name="description" content="Creative direction for embodied visionaries building a healthier, more connected world.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inconsolata:wdth,wght@100..125,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inconsolata:wdth,wght@100..125,400..900&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,6 +21,10 @@
   --cream:    #efeae0;
   --gray:     #e3ded8;
   --white:    #f5f3ef;
+  --rust:     #bf3c10; /* deeper orange: cream text passes WCAG AA */
+  --olive-deep: #7d7930; /* olive deepened 10%: white text passes WCAG AA */
+  --olive-ink: #5f5b20;
+  --rose-ink: #8f524c;
 
   --ink:      #2c2416;
   --ink-soft: rgba(44,36,22,0.68);
@@ -61,11 +65,11 @@ body {
 section { margin-bottom: 96px; }
 
 /* ── HERO ── */
-.hero { text-align: center; max-width: 820px; margin: 0 auto 72px; }
+.hero { text-align: center; max-width: 960px; margin: 0 auto 72px; }
 .hero .eyebrow { color: var(--orange); display: inline-flex; align-items: center; gap: 14px; margin-bottom: 28px; }
 .hero .eyebrow::before, .hero .eyebrow::after { content: ''; width: 28px; height: 1px; background: currentColor; opacity: .5; }
-.hero h1 { font-size: clamp(1.7rem, 4.4vw, 2.9rem); margin-bottom: 20px; }
-.hero h1 span { display: block; color: var(--moss); font-size: .62em; margin-top: 14px; letter-spacing: .03em; }
+.hero h1 { font-size: clamp(2rem, 5.6vw, 64px); font-weight: 900; margin-bottom: 20px; }
+.hero h1 span { display: block; color: var(--moss); font-size: clamp(1.05rem, 2.2vw, 24px); font-weight: 700; margin-top: 16px; letter-spacing: .03em; }
 .hero p { font-size: 1.08rem; color: var(--ink-soft); max-width: 640px; margin: 0 auto; }
 .hero p strong { color: var(--ink); }
 
@@ -76,12 +80,12 @@ section { margin-bottom: 96px; }
 .step .verb { display: block; font-family: var(--font-head); font-stretch: 125%; font-weight: 700; text-transform: uppercase; font-size: 1.05rem; letter-spacing: .04em; }
 .step .offer { display: block; font-size: .86rem; color: var(--ink-soft); }
 .arrow { align-self: center; color: var(--ink-soft); font-size: 1.3rem; padding-bottom: 28px; }
-.c1 { background: var(--orange); } .c2 { background: var(--moss); } .c3 { background: var(--rose); }
+.c1 { background: var(--rose); color: var(--espresso) !important; } .c2 { background: var(--moss); color: var(--cream) !important; } .c3 { background: var(--rust); color: var(--cream) !important; }
 
 /* ── SECTION HEAD ── */
 .sec-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
 .sec-head .eyebrow { color: var(--orange); display: block; margin-bottom: 12px; }
-.sec-head h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); margin-bottom: 14px; }
+.sec-head h2 { font-size: clamp(1.5rem, 3.6vw, 40px); margin-bottom: 14px; }
 .sec-head p { color: var(--ink-soft); }
 
 /* ── CARDS ── */
@@ -91,6 +95,7 @@ section { margin-bottom: 96px; }
 .card-body { padding: 28px 26px 26px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
 .card .eyebrow { color: var(--accent); }
 .card h3 { font-size: 1.22rem; margin-top: 6px; }
+.card.theme h3 { font-size: clamp(1.7rem, 2.9vw, 40px); line-height: 1.2; margin-top: 10px; }
 .card .tagline { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 600; font-size: 1rem; color: var(--ink); margin-top: 6px; }
 .card .lede { font-size: .94rem; color: var(--ink-soft); }
 
@@ -127,6 +132,22 @@ details h4 { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 6
 .t-olive  { --accent: var(--olive);  --pale: #efeedd; --accent-ink: #5f5b20; }
 .t-esp    { --accent: var(--espresso); --pale: #efe3df; }
 
+
+/* Core cards: color-coded themes (contrast-checked, WCAG AA) */
+.card.theme { background: var(--card-bg); border: 0; color: var(--card-text); }
+.card.theme .card-bar { display: none; }
+.card.theme .eyebrow, .card.theme h3, .card.theme .tagline, .card.theme .lede, .card.theme .price-plan,
+.card.theme .price-big, .card.theme .price-big small, .card.theme .row-label, .card.theme .transform,
+.card.theme ul, .card.theme summary, .card.theme .note, .card.theme .cta-sub { color: var(--card-text); }
+.card.theme .price, .card.theme details { border-color: var(--card-divider); }
+.card.theme ul li::before { background: var(--card-text); opacity: 1; }
+.card.theme .pill { background: var(--cream); color: var(--pill-text); }
+.card.theme .btn { background: var(--btn-bg); color: var(--btn-text); }
+.card.theme .btn:focus-visible { outline-color: var(--card-text); }
+.theme-rose { --card-bg: var(--rose); --card-text: var(--espresso); --card-divider: rgba(57,13,3,.35); --btn-bg: var(--espresso); --btn-text: var(--cream); --pill-text: var(--espresso); }
+.theme-moss { --card-bg: var(--moss); --card-text: var(--cream); --card-divider: rgba(239,234,224,.35); --btn-bg: var(--cream); --btn-text: var(--moss); --pill-text: var(--moss); }
+.theme-rust { --card-bg: var(--rust); --card-text: var(--cream); --card-divider: rgba(239,234,224,.4); --btn-bg: var(--espresso); --btn-text: var(--cream); --pill-text: var(--rust); }
+
 /* ── TABLES ── */
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; background: #fff; -webkit-overflow-scrolling: touch; }
 table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: .92rem; }
@@ -136,14 +157,40 @@ thead th span { display: block; height: 4px; width: 32px; border-radius: 2px; ma
 tbody th { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 700; font-size: .82rem; color: var(--ink-soft); width: 22%; }
 tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 tr.strong td { font-family: var(--font-head); font-stretch: 125%; font-weight: 700; font-size: 1.02rem; }
+
+/* Comparison table: subtle column tints that echo the card colors */
+.cmp thead th { font-size: clamp(1rem, 1.9vw, 24px); }
+.cmp thead th:first-child { font-size: .9rem; }
+.cmp thead th span { width: 48px; height: 5px; }
+.cmp thead th:nth-child(2) { background: #f3e8e7; } .cmp td:nth-child(2) { background: #faf5f4; }
+.cmp thead th:nth-child(3) { background: #e0ded6; } .cmp td:nth-child(3) { background: #f1f0ed; }
+.cmp thead th:nth-child(4) { background: #f3dcd4; } .cmp td:nth-child(4) { background: #faefec; }
+.cmp tr.strong td:nth-child(2) { color: var(--rose-ink); }
+.cmp tr.strong td:nth-child(3) { color: var(--moss); }
+.cmp tr.strong td:nth-child(4) { color: var(--rust); }
 .swipe { display: none; text-align: right; font-size: .78rem; color: var(--ink-soft); margin-bottom: 8px; }
 
-/* ── BACK-POCKET ── */
-.bp { background: var(--cream); border-radius: 8px; padding: 72px 40px; }
-.fits { max-width: 760px; margin: 40px auto 0; text-align: center; font-family: var(--font-head); font-stretch: 112.5%; font-weight: 600; font-size: 1.02rem; line-height: 1.7; }
-.bp .table-wrap { margin-top: 40px; }
-blockquote { font-size: .9rem; font-style: italic; color: var(--ink-soft); border-left: 3px solid var(--accent); padding-left: 12px; }
-
+/* ── BACK-POCKET (split screen) ── */
+.bp { background: var(--olive-deep); border-radius: 8px; padding: 72px 48px; display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: start; }
+.bp-intro { color: #fff; }
+.bp-intro .eyebrow { color: #fff; display: block; margin-bottom: 16px; }
+.bp-intro h2 { font-size: clamp(1.35rem, 2.4vw, 26px); margin-bottom: 16px; }
+.bp-intro p { color: #fff; }
+.bp-rule { width: 48px; height: 2px; background: #fff; margin: 20px 0; }
+.bp-fits { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 600; font-size: .9rem; line-height: 1.7; }
+.tiers { display: flex; flex-direction: column; gap: 14px; }
+.tier { background: #fff; border-radius: 6px; border-left: 8px solid var(--accent); padding: 24px 24px 24px 26px; display: grid; grid-template-columns: 1fr 210px; gap: 28px; }
+.tier .eyebrow { color: var(--accent-ink, var(--accent)); }
+.tier h3 { font-size: 1.18rem; margin: 5px 0; }
+.tier .tagline { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 600; font-size: .9rem; }
+.facts { border-top: 1px solid var(--border); margin-top: 14px; padding-top: 12px; display: grid; grid-template-columns: 124px 1fr; gap: 6px 12px; }
+.facts dt { font-family: var(--font-head); font-stretch: 112.5%; font-weight: 700; font-size: .76rem; letter-spacing: .04em; color: var(--ink-soft); padding-top: 2px; }
+.facts dd { font-size: .88rem; }
+.tier-price .price-big { font-size: 1.9rem; white-space: nowrap; }
+.tier-price .commit { font-size: .78rem; color: var(--ink-soft); margin: 8px 0 14px; }
+.tier-price .btn { background: var(--btn, var(--accent)); color: #fff; }
+.tier-price .cta-sub { text-align: left; }
+.t-olive { --btn: var(--olive-ink); }
 /* ── DISCO CALL BAND ── */
 .band { margin-bottom: 0; background: var(--orange); color: var(--white); border-radius: 8px; padding: 56px 32px; text-align: center; }
 .band p { font-size: 1.15rem; margin-bottom: 22px; }
@@ -159,12 +206,15 @@ footer a { color: var(--cream); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
+  .bp { grid-template-columns: 1fr; gap: 32px; }
   .cards { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
   .swipe { display: block; }
 }
 @media (max-width: 600px) {
   .page { padding: 56px 16px 56px; }
-  .bp { padding: 48px 16px; margin-left: -4px; margin-right: -4px; }
+  .bp { padding: 48px 16px; }
+  .tier { grid-template-columns: 1fr; gap: 18px; padding: 22px 20px; }
+  .facts { grid-template-columns: 110px 1fr; }
   .journey { flex-direction: column; gap: 14px; }
   .arrow { transform: rotate(90deg); padding: 0; }
   section { margin-bottom: 72px; }
@@ -213,7 +263,7 @@ footer a { color: var(--cream); }
     <div class="cards">
 
       <!-- 01 DIRECTION INTENSIVE -->
-      <article class="card t-orange" id="direction-intensive">
+      <article class="card theme theme-rose" id="direction-intensive">
         <div class="card-bar"></div>
         <div class="card-body">
           <div>
@@ -267,7 +317,7 @@ footer a { color: var(--cream); }
       </article>
 
       <!-- 02 BRAND LAUNCH BUILD -->
-      <article class="card t-moss" id="brand-launch-build">
+      <article class="card theme theme-moss" id="brand-launch-build">
         <div class="card-bar"></div>
         <div class="card-body">
           <div>
@@ -337,7 +387,7 @@ footer a { color: var(--cream); }
       </article>
 
       <!-- 03 CREATIVE PARTNERSHIP -->
-      <article class="card t-rose" id="creative-partnership">
+      <article class="card theme theme-rust" id="creative-partnership">
         <div class="card-bar"></div>
         <div class="card-body">
           <div>
@@ -417,13 +467,13 @@ footer a { color: var(--cream); }
     </div>
     <p class="swipe">Swipe to compare →</p>
     <div class="table-wrap">
-      <table>
+      <table class="cmp">
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col"><span style="background:var(--orange)"></span>Direction Intensive</th>
+            <th scope="col"><span style="background:var(--rose)"></span>Direction Intensive</th>
             <th scope="col"><span style="background:var(--moss)"></span>Brand Launch Build</th>
-            <th scope="col"><span style="background:var(--rose)"></span>Creative Partnership</th>
+            <th scope="col"><span style="background:var(--rust)"></span>Creative Partnership</th>
           </tr>
         </thead>
         <tbody>
@@ -440,156 +490,55 @@ footer a { color: var(--cream); }
 
   <!-- BACK-POCKET -->
   <section class="bp" aria-labelledby="bp-title">
-    <div class="sec-head">
+    <div class="bp-intro">
       <span class="eyebrow">Back-Pocket Creative Support</span>
       <h2 class="headline" id="bp-title">A creative partner within reach as your vision keeps evolving.</h2>
       <p>For mission-led founders who need a trusted sounding board, clear next steps, or steady hands-on help—without entering a full brand build or embedded transformation.</p>
+      <div class="bp-rule" aria-hidden="true"></div>
+      <p class="bp-fits">Direction Intensive clarifies. Brand Launch Build creates the foundation. Creative Partnership connects the wider business. Back-Pocket keeps the work evolving.</p>
     </div>
-
-    <div class="cards">
-
-      <!-- CREATIVE INTEL -->
-      <article class="card t-olive">
-        <div class="card-bar"></div>
-        <div class="card-body">
-          <div>
-            <span class="eyebrow">Entry</span>
-            <h3 class="headline">Creative Intel</h3>
-            <p class="tagline">A back-pocket community by Kyra Aulani.</p>
-          </div>
-          <p class="lede">Back-pocket creative support with resources everyone can use, inside a private group community in Ivorey.</p>
-          <div class="price">
-            <p class="price-big">$250 <small>/ month</small></p>
-            <span class="pill">Month to month</span>
-          </div>
-          <div>
-            <p class="row-label">Includes</p>
-            <ul>
-              <li>Async access to the Creative Intel community</li>
-              <li>A shared resource library</li>
-            </ul>
-          </div>
-          <div>
-            <p class="row-label">Your Role</p>
-            <p class="transform">You implement independently. This tier includes no 1:1 sessions and no done-for-you production.</p>
-          </div>
-          <div class="card-cta">
-            <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
-          </div>
+    <div class="tiers">
+      <article class="tier t-olive">
+        <div>
+          <span class="eyebrow">Entry</span>
+          <h3 class="headline">Creative Intel</h3>
+          <p class="tagline">A back-pocket community by Kyra Aulani.</p>
+          <dl class="facts"><dt>Format</dt><dd>Async group community in Ivorey</dd><dt>Live support</dt><dd>None (async)</dd><dt>Implementation</dt><dd>Founder</dd></dl>
+        </div>
+        <div class="tier-price">
+          <p class="price-big">$250 <small>/ month</small></p>
+          <p class="commit">Month to month</p>
+          <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
         </div>
       </article>
-
-      <!-- BACK-POCKET DIRECTION -->
-      <article class="card t-moss">
-        <div class="card-bar"></div>
-        <div class="card-body">
-          <div>
-            <span class="eyebrow">Tier One</span>
-            <h3 class="headline">Back-Pocket Direction</h3>
-            <p class="tagline">A thinking partner for what’s now and what’s next.</p>
-          </div>
-          <p class="lede">For founders who can implement independently or with their team, but want consistent creative direction, strategic feedback, and accountability.</p>
-          <div class="price">
-            <p class="price-big">$750 <small>/ month</small></p>
-            <span class="pill">Month to month</span>
-          </div>
-          <div>
-            <p class="row-label">What You Leave Each Month With</p>
-            <p class="transform">Clear priorities, documented decisions, actionable feedback, and a grounded plan for your next steps.</p>
-          </div>
-          <details>
-            <summary>What’s Included</summary>
-            <div class="inner">
-              <ul>
-                <li>Two 60-minute strategy sessions per month</li>
-                <li>Brand, messaging, offer, and customer-journey guidance</li>
-                <li>Launch sequencing, pricing and packaging feedback, and priority setting</li>
-                <li>Up to two asset or copy reviews per month; each review covers one agreed asset, not a full website or curriculum</li>
-                <li>Async questions and decision support via WhatsApp or the shared project workspace</li>
-                <li>Responses within 1–2 business days</li>
-                <li>A shared workspace with session notes, decisions, and next steps</li>
-                <li>A rolling 90-day roadmap, refined as priorities evolve</li>
-              </ul>
-              <p class="note">You or your team create and implement the assets, copy, website changes, content, and systems. This tier provides guidance and review—not done-for-you production.</p>
-            </div>
-          </details>
-          <blockquote>Keep a creative director in your back pocket—for clearer decisions, connected ideas, and steady movement toward the bigger vision.</blockquote>
-          <div class="card-cta">
-            <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
-          </div>
+      <article class="tier t-moss">
+        <div>
+          <span class="eyebrow">Tier One</span>
+          <h3 class="headline">Back-Pocket Direction</h3>
+          <p class="tagline">A thinking partner for what’s now and what’s next.</p>
+          <dl class="facts"><dt>Format</dt><dd>1:1</dd><dt>Live support</dt><dd>Two 60-minute sessions monthly</dd><dt>Implementation</dt><dd>Founder or their team</dd></dl>
+        </div>
+        <div class="tier-price">
+          <p class="price-big">$750 <small>/ month</small></p>
+          <p class="commit">Month to month</p>
+          <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
         </div>
       </article>
-
-      <!-- DIRECTION + DELIVERY -->
-      <article class="card t-esp">
-        <div class="card-bar"></div>
-        <div class="card-body">
-          <div>
-            <span class="eyebrow">Tier Two</span>
-            <h3 class="headline">Back-Pocket Direction + Delivery</h3>
-            <p class="tagline">A thinking partner—and hands-on help moving the work forward.</p>
-          </div>
-          <p class="lede">For founders with an established brand foundation who need ongoing direction plus focused creative implementation as they launch, refine, and grow.</p>
-          <div class="price">
-            <p class="price-big">$1,750 <small>/ month</small></p>
-            <p class="price-plan">Initial commitment: $10,500</p>
-            <span class="pill">Six-month commitment</span>
-          </div>
-          <div>
-            <p class="row-label">What You Leave Each Month With</p>
-            <p class="transform">Clear direction and completed, prioritized improvements that keep your brand and customer experience moving with the business.</p>
-          </div>
-          <details>
-            <summary>What’s Included</summary>
-            <div class="inner">
-              <ul>
-                <li>All strategic guidance, async access, and workspace support from Back-Pocket Direction</li>
-                <li>One 60-minute strategy or working session per week, replacing the two monthly sessions</li>
-                <li>Up to 8 hours of creative implementation per month (about 2 hours per week), in addition to scheduled sessions</li>
-                <li>One active production priority at a time, organized in a shared queue</li>
-                <li>An agreed monthly delivery plan based on the available production capacity</li>
-                <li>Up to two consolidated revision rounds per deliverable, counted within production capacity</li>
-                <li>Recorded walkthroughs or brief handoff notes for delivered assets and updates</li>
-                <li>Light coordination with existing collaborators, counted within production capacity</li>
-              </ul>
-            </div>
-          </details>
-          <blockquote>Keep the vision moving—with a creative partner who helps you decide what comes next and brings the right pieces into form.</blockquote>
-          <div class="card-cta">
-            <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
+      <article class="tier t-esp">
+        <div>
+          <span class="eyebrow">Tier Two</span>
+          <h3 class="headline">Back-Pocket Direction + Delivery</h3>
+          <p class="tagline">A thinking partner—and hands-on help moving the work forward.</p>
+          <dl class="facts"><dt>Format</dt><dd>1:1</dd><dt>Live support</dt><dd>One 60-minute session weekly</dd><dt>Implementation</dt><dd>Up to 8 hours monthly</dd></dl>
+        </div>
+        <div class="tier-price">
+          <p class="price-big">$1,750 <small>/ month</small></p>
+          <p class="commit">Six months · $10,500</p>
+          <a class="btn" href="https://api.leadconnectorhq.com/widget/form/jeSa0j4oLYkS8WhQ5Rl1" target="_blank" rel="noopener">Apply</a>
             <p class="cta-sub">Limited to two Direction + Delivery clients at a time.</p>
-          </div>
         </div>
       </article>
-
     </div>
-
-    <p class="swipe" style="margin-top:40px">Swipe to compare →</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">At a Glance</th>
-            <th scope="col"><span style="background:var(--olive)"></span>Creative Intel</th>
-            <th scope="col"><span style="background:var(--moss)"></span>Back-Pocket Direction</th>
-            <th scope="col"><span style="background:var(--espresso)"></span>Back-Pocket Direction + Delivery</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="strong"><th scope="row">Monthly investment</th><td>$250</td><td>$750</td><td>$1,750</td></tr>
-          <tr><th scope="row">Commitment</th><td>Month to month</td><td>Month to month</td><td>Six months · $10,500</td></tr>
-          <tr><th scope="row">Format</th><td>Async group community in Ivorey</td><td>1:1</td><td>1:1</td></tr>
-          <tr><th scope="row">Live support</th><td>None (async)</td><td>Two 60-minute sessions monthly</td><td>One 60-minute session weekly</td></tr>
-          <tr><th scope="row">Strategic guidance</th><td>Shared resources + community</td><td>Included</td><td>Included</td></tr>
-          <tr><th scope="row">Async response window</th><td>Community</td><td>1–2 business days</td><td>1–2 business days</td></tr>
-          <tr><th scope="row">Implementation</th><td>Founder</td><td>Founder or their team</td><td>Up to 8 hours monthly</td></tr>
-          <tr><th scope="row">Capacity</th><td>Open</td><td>Open</td><td>Two clients at a time</td></tr>
-          <tr><th scope="row">Primary outcome</th><td>Shared know-how + resources</td><td>Clear decisions + next steps</td><td>Clear decisions + focused delivery</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="fits">Direction Intensive clarifies. Brand Launch Build creates the foundation. Creative Partnership connects the wider business. Back-Pocket keeps the work evolving.</p>
   </section>
 
   <!-- DISCO CALL -->
